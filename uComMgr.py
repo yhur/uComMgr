@@ -107,25 +107,27 @@ class BLE():
 wifi_conn = False
 
 
-def connectWiFi(uniqName):
+def connectWiFi(uniqName, ssid, pw):
     '''
     This connects the device to the Wireless LAN, if The ssid and 
     the password are stored in the file named 'wifi.cfg'
     '''
     global wifi_conn
-    try:
-        f = open(wifi_cfg, 'r')
-        line = f.read()
-        cred = json.loads(line)
-        ssid = cred['ssid'].strip()
-        pw = cred['pw'].strip()
-        f.close()
-    except OSError as e:
-        print('no config file')
-        return False
-    except:
-        print('other exception')
-        return False
+    pw = ''
+    if ssid is None:
+        try:
+            f = open(wifi_cfg, 'r')
+            line = f.read()
+            cred = json.loads(line)
+            ssid = cred['ssid'].strip()
+            pw = cred['pw'].strip()
+            f.close()
+        except OSError as e:
+            print('no config file')
+            return False
+        except:
+            print('other exception')
+            return False
 
     try:
         if ssid is '':
@@ -205,9 +207,9 @@ def startBLE(name, myBLECallback=None):
     return ble
 
 
-def startWiFi(name):
+def startWiFi(name, ssid=None, pw=None):
     '''
     This starts the WiFi connection with the given name as the mDNS name.
     "name.local" is the mDNS name for the device, when you connect to it.
     '''
-    return connectWiFi(getUniqName(name))
+    return connectWiFi(getUniqName(name), ssid, pw)
