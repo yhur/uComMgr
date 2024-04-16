@@ -113,7 +113,7 @@ def connectWiFi(uniqName, ssid, pw):
     the password are stored in the file named 'wifi.cfg'
     '''
     global wifi_conn
-    pw = ''
+    pw = '' if pw is None else pw
     if ssid is None:
         try:
             f = open(wifi_cfg, 'r')
@@ -213,3 +213,4 @@ def startWiFi(name, ssid=None, pw=None):
     "name.local" is the mDNS name for the device, when you connect to it.
     '''
     return connectWiFi(getUniqName(name), ssid, pw)
+
