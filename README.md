@@ -8,7 +8,7 @@ This Micropython library has the BLE and WiFi connection function. This uses the
 
 ```python
 # uComMgr.startWiFi(name, ssid=None, pw=None)
- nic = uComMgr.startWiFi('myDevice')                  
+nic = uComMgr.startWiFi('myDevice')                  
 ```
 When you pass some string like 'myDevice' as above, this will connects to the wifi and the name will be the part of the mDNS hostname. The hostname would be myDevice-2cf0c0, where 2cf0c0 is the last three bytes of the MAC address.
 
