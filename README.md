@@ -1,5 +1,9 @@
 # ESP32 uCommMgr.py
+---
 
+This package has a WiFi utility and a BLE utility for ESP32 Micropython
+
+---
 ## WiFi Client
 This Micropython library has the BLE and WiFi connection function. This uses the configuration file `wifi.cfg` to get the ssid and wifi password. The format is as follows.
 ```json
