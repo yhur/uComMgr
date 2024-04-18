@@ -1,6 +1,6 @@
 {
     "urls": [
-      ["uComMgr.py", "github:yhur/uComMgr32/uComMgr32.py"]
+      ["uComMgr32.py", "github:yhur/uComMgr32/uComMgr32.py"]
     ],
     "deps": [],
     "version": "0.1.0"
