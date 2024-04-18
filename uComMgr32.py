@@ -168,7 +168,7 @@ def saveWiFiConfig(message):
     This saves the WiFi ssid and password to 'wifi.cfg'
     '''
     key_value = message.split(':')
-    if key_value[0].strip() not in 'ssid|pw':
+    if key_value[0].strip() not in ['ssid', 'pw']:
         return False
     try:
         try:
@@ -178,13 +178,13 @@ def saveWiFiConfig(message):
             f.close()
         except:
             cred = {}
-        cred[key_value[0]] = key_value[1]
+        cred[key_value[0].strip()] = key_value[1].strip()
         cred = json.dumps(cred)
 
         f = open(wifi_cfg, 'w')
         f.write(cred)
         f.close()
-    except OSError:
+    except Exception:
         print('error in wifi cfg file wriging')
         return False
 
@@ -213,4 +213,5 @@ def startWiFi(name, ssid=None, pw=None):
     "name.local" is the mDNS name for the device, when you connect to it.
     '''
     return connectWiFi(getUniqName(name), ssid, pw)
+
 
